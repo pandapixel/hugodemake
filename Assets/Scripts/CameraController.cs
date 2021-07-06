@@ -6,6 +6,9 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.position = new Vector3(transform.position.x, player.position.y, transform.position.z);
+        if (player.position.y > 0 && player.position.y < 19.2f)
+        {
+            transform.position = new Vector3(transform.position.x, player.position.y, transform.position.z);
+        }
     }
 }
