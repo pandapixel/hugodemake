@@ -4,7 +4,7 @@ public class CameraController : MonoBehaviour
 {
     public Transform player;
 
-    void Update()
+    void LateUpdate()
     {
         transform.position = new Vector3(transform.position.x, player.position.y, transform.position.z);
     }
