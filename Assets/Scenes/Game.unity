@@ -517,9 +517,9 @@ GameObject:
   m_Component:
   - component: {fileID: 617086944}
   - component: {fileID: 617086945}
-  - component: {fileID: 617086946}
   - component: {fileID: 617086948}
   - component: {fileID: 617086947}
+  - component: {fileID: 617086946}
   m_Layer: 0
   m_Name: Player Group
   m_TagString: Untagged
