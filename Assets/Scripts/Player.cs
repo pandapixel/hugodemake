@@ -28,13 +28,13 @@ public class Player : MonoBehaviour
             position = 1;
         }
 
-        if (Input.GetAxis("Horizontal") > 0 && !isJumping && position < 2)
+        if (Input.GetAxisRaw("Horizontal") > 0 && !isJumping && position < 2)
         {
             anim.SetTrigger("jumpRight");
             isJumping = true;
             position++;
         }
-        if (Input.GetAxis("Horizontal") < 0 && !isJumping && position > 0)
+        if (Input.GetAxisRaw("Horizontal") < 0 && !isJumping && position > 0)
         {
             anim.SetTrigger("jumpLeft");
             isJumping = true;
