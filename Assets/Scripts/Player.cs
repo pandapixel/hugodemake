@@ -4,9 +4,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameController gameController;
+    public GameObject perdeuTudo;
 
     Animator anim;
     bool isJumping;
+    bool isAboveLog;
     int position;
 
     void Start()
@@ -45,14 +47,26 @@ public class Player : MonoBehaviour
     public void JumpFinish()
     {
         isJumping = false;
+
         if (!gameController.gameStarted)
         {
             gameController.GameStart();
+        }
+
+        if (!isAboveLog)
+        {
+            perdeuTudo.SetActive(true);
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         transform.parent = other.transform;
+        isAboveLog = true;
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        isAboveLog = false;
     }
 }
