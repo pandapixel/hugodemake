@@ -23,13 +23,6 @@ public class Player : MonoBehaviour
 
     void Movement()
     {
-        if (Input.GetButton("Submit") && !gameController.gameStarted && !isJumping)
-        {
-            anim.SetTrigger("jumpRight");
-            isJumping = true;
-            position = 1;
-        }
-
         if (Input.GetAxisRaw("Horizontal") > 0 && !isJumping && position < 2)
         {
             anim.SetTrigger("jumpRight");
@@ -42,6 +35,13 @@ public class Player : MonoBehaviour
             isJumping = true;
             position--;
         }
+    }
+
+    public void StartGame()
+    {
+        anim.SetTrigger("jumpRight");
+        isJumping = true;
+        position = 1;
     }
 
     public void JumpFinish()
