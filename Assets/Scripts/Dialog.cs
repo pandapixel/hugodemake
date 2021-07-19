@@ -22,7 +22,7 @@ public class Dialog : MonoBehaviour
         if (Input.GetButton("Submit") && dialogFinish)
         {
             onComplete.Invoke();
-            gameObject.SetActive(false);
+            GetComponent<Animator>().SetTrigger("close");
         }
     }
 
