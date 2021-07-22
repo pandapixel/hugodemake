@@ -3,7 +3,12 @@ using UnityEngine;
 public class Log : MonoBehaviour
 {
     public GameController gameController;
-    float speed = 0.5f;
+    public float speed = 0.5f;
+
+    void Start()
+    {
+        gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+    }
 
     void Update()
     {
