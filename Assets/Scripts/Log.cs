@@ -17,4 +17,13 @@ public class Log : MonoBehaviour
             transform.Translate(Vector2.up * speed * Time.deltaTime);
         }
     }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.tag == "Finish")
+        {
+            Destroy(gameObject);
+        }
+
+    }
 }
