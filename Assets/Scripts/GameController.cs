@@ -12,4 +12,9 @@ public class GameController : MonoBehaviour
         gameStarted = true;
         onStart.Invoke();
     }
+
+    public void Finish()
+    {
+        gameStarted = false;
+    }
 }

@@ -7,8 +7,8 @@ public class Player : MonoBehaviour
     public GameObject perdeuTudo;
 
     Animator anim;
+    GameObject steppingLog;
     bool isJumping;
-    bool isAboveLog;
     int position;
 
     void Start()
@@ -53,20 +53,22 @@ public class Player : MonoBehaviour
             gameController.GameStart();
         }
 
-        if (!isAboveLog)
+        if (!steppingLog)
         {
             perdeuTudo.SetActive(true);
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        transform.parent = other.transform;
-        isAboveLog = true;
+        transform.parent = col.transform;
+        steppingLog = col.gameObject;
+        steppingLog.GetComponent<Log>().isPlayerAbove = true;
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    void OnTriggerExit2D(Collider2D col)
     {
-        isAboveLog = false;
+        steppingLog.GetComponent<Log>().isPlayerAbove = false;
+        steppingLog = null;
     }
 }
