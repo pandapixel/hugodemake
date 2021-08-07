@@ -76,14 +76,20 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        transform.parent = col.transform;
-        steppingLog = col.gameObject;
-        steppingLog.GetComponent<Log>().isPlayerAbove = true;
+        if (col.tag == "Log")
+        {
+            transform.parent = col.transform;
+            steppingLog = col.gameObject;
+            steppingLog.GetComponent<Log>().isPlayerAbove = true;
+        }
     }
 
     void OnTriggerExit2D(Collider2D col)
     {
-        steppingLog.GetComponent<Log>().isPlayerAbove = false;
-        steppingLog = null;
+        if (col.tag == "Log")
+        {
+            steppingLog.GetComponent<Log>().isPlayerAbove = false;
+            steppingLog = null;
+        }
     }
 }

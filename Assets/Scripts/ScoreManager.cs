@@ -29,4 +29,10 @@ public class ScoreManager : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
     }
+
+    public void AddScore(int scoreAdd)
+    {
+        score += scoreAdd;
+        scoreText.text = score.ToString();
+    }
 }

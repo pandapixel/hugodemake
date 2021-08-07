@@ -40,14 +40,14 @@ public class LogSpawner : MonoBehaviour
         }
     }
 
-    void SpawnLog(float size)
+    void SpawnLog(float side)
     {
-        Vector2 position = new Vector2(0.26f * size, Random.Range(1.1f, 15f));
+        Vector2 position = new Vector2(0.26f * side, Random.Range(1.1f, 15f));
         RaycastHit2D hit = Physics2D.BoxCast(position, logSize, 0, Vector2.zero);
 
         while (hit.collider)
         {
-            position = new Vector2(0.26f * size, Random.Range(1.1f, 15f));
+            position = new Vector2(0.26f * side, Random.Range(1.1f, 15f));
             hit = Physics2D.BoxCast(position, logSize, 0, Vector2.zero);
         }
 
