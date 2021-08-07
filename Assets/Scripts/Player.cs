@@ -1,10 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     public GameController gameController;
-    public GameObject perdeuTudo;
 
     Animator anim;
     GameObject steppingLog;
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void StartGame()
+    public void JumpStart()
     {
         anim.SetTrigger("jumpRight");
         isJumping = true;
@@ -55,7 +55,22 @@ public class Player : MonoBehaviour
 
         if (!steppingLog)
         {
-            perdeuTudo.SetActive(true);
+            LoseLife();
+        }
+    }
+
+    void LoseLife()
+    {
+        int lives = PlayerPrefs.GetInt("Lives") - 1;
+
+        if (lives > 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            PlayerPrefs.SetInt("Lives", lives);
+        }
+        else
+        {
+            SceneManager.LoadScene("Score");
         }
     }
 

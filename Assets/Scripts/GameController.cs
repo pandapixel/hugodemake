@@ -1,15 +1,31 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject dialogFinish;
     public GameObject player;
+    public GameObject dialogPrefab;
+    public Transform canvas;
 
     [HideInInspector]
     public bool gameStarted;
     [HideInInspector]
     public UnityEvent onStart;
+
+    void Start()
+    {
+        if (PlayerPrefs.GetInt("Lives") == 2)
+        {
+            Dialog dialog = Instantiate(dialogPrefab, canvas).GetComponent<Dialog>();
+            dialog.text = "SE O TRONCO NÃO VIRAR,\nNÓS VAMOS CHEGAR!";
+            dialog.onComplete.AddListener(player.GetComponent<Player>().JumpStart);
+        }
+        else
+        {
+            player.GetComponent<Player>().JumpStart();
+        }
+    }
 
     public void GameStart()
     {
@@ -20,7 +36,10 @@ public class GameController : MonoBehaviour
     public void Finish()
     {
         gameStarted = false;
-        dialogFinish.SetActive(true);
         player.GetComponent<Animator>().SetTrigger("moveToFront");
+
+        Dialog dialog = Instantiate(dialogPrefab, canvas).GetComponent<Dialog>();
+        dialog.text = "MUITO BEM, VOCÊ CHEGOU!";
+        dialog.onComplete.AddListener(() => SceneManager.LoadScene("Score"));
     }
 }

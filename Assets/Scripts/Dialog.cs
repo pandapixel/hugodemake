@@ -6,14 +6,13 @@ using UnityEngine.UI;
 public class Dialog : MonoBehaviour
 {
     public Text textDisplay;
+    public string text;
     public UnityEvent onComplete;
 
-    string sentence;
     bool dialogFinish;
 
     void Start()
     {
-        sentence = textDisplay.text;
         StartCoroutine("Type");
     }
 
@@ -30,12 +29,17 @@ public class Dialog : MonoBehaviour
     {
         textDisplay.text = "";
 
-        foreach (char letter in sentence.ToCharArray())
+        foreach (char letter in text.ToCharArray())
         {
             textDisplay.text += letter;
             yield return new WaitForSeconds(0.05f);
         }
 
         dialogFinish = true;
+    }
+
+    public void DestroyAfterAnim()
+    {
+        Destroy(gameObject);
     }
 }
