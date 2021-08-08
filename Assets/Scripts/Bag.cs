@@ -15,6 +15,7 @@ public class Bag : MonoBehaviour
     {
         if (col.tag == "Player")
         {
+            PlayerPrefs.SetInt("BagScore", PlayerPrefs.GetInt("BagScore") + 1);
             scoreManager.AddScore(300);
             GetComponent<SpriteRenderer>().sprite = emptySprite;
             GetComponent<Collider2D>().enabled = false;

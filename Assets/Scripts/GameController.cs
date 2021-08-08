@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.SetInt("BagScore", 0);
         if (PlayerPrefs.GetInt("Lives") == 3)
         {
             Dialog dialog = Instantiate(dialogPrefab, canvas).GetComponent<Dialog>();
@@ -40,6 +41,7 @@ public class GameController : MonoBehaviour
 
         Dialog dialog = Instantiate(dialogPrefab, canvas).GetComponent<Dialog>();
         dialog.text = "MUITO BEM, VOCÊ CHEGOU!";
+        PlayerPrefs.SetInt("Finished", 1);
         dialog.onComplete.AddListener(() => SceneManager.LoadScene("Score"));
     }
 }

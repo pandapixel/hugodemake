@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour
 
     float playerStartPos;
     int score;
+    int bagScore;
     Text scoreText;
 
     void Start()
@@ -18,6 +19,7 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = score.ToString();
         gameController.onStart.AddListener(() => StartCoroutine("DistanceScore"));
         playerStartPos = player.position.y;
+        PlayerPrefs.SetInt("Score", 0);
     }
 
     IEnumerator DistanceScore()
@@ -25,14 +27,15 @@ public class ScoreManager : MonoBehaviour
         while (gameController.gameStarted)
         {
             score = (int) ((player.position.y - playerStartPos) * 10) * 10;
-            scoreText.text = score.ToString();
+            scoreText.text = (bagScore + score).ToString();
+            PlayerPrefs.SetInt("DistanceScore", score);
             yield return new WaitForSeconds(1);
         }
     }
 
     public void AddScore(int scoreAdd)
     {
-        score += scoreAdd;
-        scoreText.text = score.ToString();
+        bagScore += scoreAdd;
+        scoreText.text = (score + bagScore).ToString();
     }
 }
