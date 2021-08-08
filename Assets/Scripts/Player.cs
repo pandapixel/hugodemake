@@ -18,7 +18,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Movement();
+        if (gameController.gameStarted)
+        {
+            Movement();
+        }
     }
 
     void Movement()
@@ -61,17 +64,8 @@ public class Player : MonoBehaviour
 
     void LoseLife()
     {
-        int lives = PlayerPrefs.GetInt("Lives") - 1;
-
-        if (lives > 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            PlayerPrefs.SetInt("Lives", lives);
-        }
-        else
-        {
-            SceneManager.LoadScene("Score");
-        }
+        PlayerPrefs.SetInt("Lives", PlayerPrefs.GetInt("Lives") - 1);
+        SceneManager.LoadScene("LoseLife");
     }
 
     void OnTriggerEnter2D(Collider2D col)

@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        if (PlayerPrefs.GetInt("Lives") == 2)
+        if (PlayerPrefs.GetInt("Lives") == 3)
         {
             Dialog dialog = Instantiate(dialogPrefab, canvas).GetComponent<Dialog>();
             dialog.text = "SE O TRONCO NÃO VIRAR,\nNÓS VAMOS CHEGAR!";

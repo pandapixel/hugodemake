@@ -5,7 +5,7 @@ public class MenuController : MonoBehaviour
 {
     public void StartGame()
     {
-        PlayerPrefs.SetInt("Lives", 2);
+        PlayerPrefs.SetInt("Lives", 3);
         SceneManager.LoadScene("Game");
     }
 }

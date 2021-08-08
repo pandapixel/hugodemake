@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Score.unity
     guid: 038c58c8bb6f8b6429ebca881abcbe41
+  - enabled: 1
+    path: Assets/Scenes/LoseLife.unity
+    guid: 273c3c64299c4c641a8672c770a9b368
   m_configObjects: {}
