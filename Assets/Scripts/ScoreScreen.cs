@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ScoreScreen : MonoBehaviour
@@ -19,7 +20,7 @@ public class ScoreScreen : MonoBehaviour
         int distanceScore = PlayerPrefs.GetInt("DistanceScore");
         int totalScore = bagScore + lifeScore + finishScore + distanceScore;
 
-        for (int i = 0; i <= 1000 / 5; i++)
+        for (int i = 0; i <= bagScore / 5; i++)
         {
             bagScoreText.text = $"{i * 5} pts";
             yield return 0;
@@ -53,5 +54,9 @@ public class ScoreScreen : MonoBehaviour
         PlayerPrefs.SetInt("Lives", 0);
         PlayerPrefs.SetInt("Finished", 0);
         PlayerPrefs.SetInt("DistanceScore", 0);
+
+        yield return new WaitForSeconds(3);
+
+        SceneManager.LoadScene("Credits");
     }
 }
